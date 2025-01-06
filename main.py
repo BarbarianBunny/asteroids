@@ -6,6 +6,7 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+import sys
 
 
 def main():
@@ -41,6 +42,12 @@ def main():
             thing.draw(screen)
 
         pygame.display.flip()  # Updates display, call last
+
+        for asteroid in asteroids:
+            if asteroid.collision(player):
+                print("Game over")
+                sys.exit()
+
         dt = clock.tick(60) / 1000  # Wait 1/60th of a sec
 
 
