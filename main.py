@@ -34,7 +34,8 @@ def main():
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return
+                print("Pygame Quit")
+                sys.exit()
 
         for thing in updatable:
             thing.update(dt)
@@ -51,6 +52,8 @@ def main():
                     asteroid.split()
             if asteroid.collision(player):
                 print("Game over")
+                print(f"Asteroid: {asteroid.position}")
+                print(f"Player:   {player.position}")
                 sys.exit()
 
         pygame.display.flip()  # Updates display, call last
