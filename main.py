@@ -44,12 +44,16 @@ def main():
         for thing in drawable:
             thing.draw(screen)
 
-        pygame.display.flip()  # Updates display, call last
-
         for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.collision(shot):
+                    shot.kill()
+                    asteroid.split()
             if asteroid.collision(player):
                 print("Game over")
                 sys.exit()
+
+        pygame.display.flip()  # Updates display, call last
 
         dt = clock.tick(60) / 1000  # Wait 1/60th of a sec
 
