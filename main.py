@@ -25,13 +25,13 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
-        for item in updatable:
-            item.update(dt)
+        for thing in updatable:
+            thing.update(dt)
 
         # Draw
         screen.fill((0, 0, 0))
-        for item in drawable:
-            item.draw(screen)
+        for thing in drawable:
+            thing.draw(screen)
 
         pygame.display.flip()  # Updates display, call last
         dt = clock.tick(60) / 1000  # Wait 1/60th of a sec
